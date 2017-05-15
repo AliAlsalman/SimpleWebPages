@@ -1,0 +1,121 @@
+/* Ali Ayad, Interactive Media Development, Project Final Submission, May 24, 2014 */
+body{
+    background-color: black;
+}
+
+main{
+    background-color: black;
+}
+
+/*Customized Bootstrap 1*/
+nav{    
+    list-style: none;
+    text-align: center;
+}
+
+/*Customized Bootstrap 2*/
+nav a {
+	color: white;
+	font-family: cursive;
+	font-size: 23px;
+	line-height: 35px;
+	padding-left: 40px;
+    padding-right: 40px;
+	text-decoration: none;
+}
+
+/*Customized Bootstrap 3*/
+nav a:hover{
+	color: #c40891;
+	background-color: #e9faa5;
+	border-radius: 5px;
+}
+
+/*Customized Bootstrap 4*/
+.green{
+    color: green;
+}
+
+/*Customized Bootstrap 5*/
+.orange{
+    color: orange;
+}
+
+/*Customized Bootstrap 6*/
+.btntextcolor{
+    color: black;
+}
+
+/*Customized Bootstrap 7*/
+.pad{
+    padding-top: 5px;
+    background-color: black;
+}
+
+.intro{
+    padding-top: 25px;
+    text-align: center;
+    color: white;
+}
+
+.title{
+    text-align: center;
+    color: rgb(100,100,100);
+}
+
+.content{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: white;
+}
+
+.blacktext{
+    color: black;
+}
+
+#contact label{
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+        #contact_submit{
+            padding-left: 100px;
+        }
+        #contact div{
+            margin-top: 1em;
+        }
+        textarea{
+            vertical-align: top;
+        }
+            
+        .error{
+            display: none;
+            margin-left: 10px;
+        }       
+        
+        .error_show{
+            color: red;
+            margin-left: 10px;
+        }
+        
+        input.invalid, textarea.invalid{
+            border: 2px solid red;
+        }
+        
+        input.valid, textarea.valid{
+            border: 2px solid green;
+        }
+
+.accd{
+    padding-bottom: 50px;
+}
+
+.accd1{
+    padding-top: 50px;
+}
+
+#mapPlaceholder {
+    height: 400px;
+    width: 700px;
+}

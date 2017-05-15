@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<!-- Ali Ayad, Interactive Media Development, Project Final Submission, May 24, 2014 -->
+<html lang="en">
+    
+    <head>
+        <title>Home</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <script src="js/respond.js"></script>
+        <!-- - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="custom.css">
+        <!-- - - - - - - - - - - - - - - - - - - - - -->
+        <script type='text/javascript' src='jquery.min.js'></script>
+
+        <link rel="stylesheet" href="jquery-ui.css">
+        <script type='text/javascript' src="jquery-1.10.2.js"></script>
+        <script type='text/javascript' src="ui/1.10.4/jquery-ui.js"></script>
+
+        <script src="http://maps.google.com/maps/api/js?sensor=false">
+            </script>
+            <script>
+                if (navigator.geolocation)
+                {
+                    navigator.geolocation.getCurrentPosition(showCurrentLocation);
+                }
+                else
+                {
+                   alert("Geolocation is not supported by your browser.");
+                }
+
+                function showCurrentLocation(position)
+                {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    var coords = new google.maps.LatLng(latitude, longitude);
+
+                    var mapOptions = {
+                    zoom: 15,
+                    center: coords,
+                    mapTypeControl: true,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                
+                map = new google.maps.Map(
+                document.getElementById("mapPlaceholder"), mapOptions
+                );
+
+                
+                var marker = new google.maps.Marker({
+                position: coords,
+                map: map,
+                title: "You are located at!"
+                });
+                }
+            </script>
+
+
+        <script>
+        $(document).ready(function() {
+            <!-- Real-time Validation -->
+                <!--Name can't be blank-->
+                $('#contact_name').on('input', function() {
+                    var input=$(this);
+                    var is_name=input.val();
+                    if(is_name){input.removeClass("invalid").addClass("valid");}
+                    else{input.removeClass("valid").addClass("invalid");}
+                });
+                
+                <!--Email must be an email -->
+                $('#contact_email').on('input', function() {
+                    var input=$(this);
+                    var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                    var is_email=re.test(input.val());
+                    if(is_email){input.removeClass("invalid").addClass("valid");}
+                    else{input.removeClass("valid").addClass("invalid");}
+                });
+                
+                <!--Website must be a website -->
+                $('#contact_website').on('input', function() {
+                    var input=$(this);
+                    if (input.val().substring(0,4)=='www.'){input.val('http://www.'+input.val().substring(4));}
+                    var re = /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/;
+                    var is_url=re.test(input.val());
+                    if(is_url){input.removeClass("invalid").addClass("valid");}
+                    else{input.removeClass("valid").addClass("invalid");}
+                });
+                
+                <!--Message cant be blank -->
+                $('#contact_message').keyup(function(event) {
+                    var input=$(this);
+                    var message=$(this).val();
+                    console.log(message);
+                    if(message){input.removeClass("invalid").addClass("valid");}
+                    else{input.removeClass("valid").addClass("invalid");}   
+                });
+        
+                <!-- After Form Submitted Validation-->
+                $("#contact_submit button").click(function(event){
+                    var form_data=$("#contact").serializeArray();
+                    var error_free=true;
+                    for (var input in form_data){
+                        var element=$("#contact_"+form_data[input]['name']);
+                        var valid=element.hasClass("valid");
+                        var error_element=$("span", element.parent());
+                        if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+                        else{error_element.removeClass("error_show").addClass("error");}
+                    }
+                    if (!error_free){
+                        event.preventDefault(); 
+                    }
+                    else{
+                        alert('No errors: Form will be submitted');
+                    }
+                });
+
+        });
+        </script>
+    </head>
+    
+    <body>
+
+        <main class="container">
+
+            <div class="row">
+                <!-- Customized Bootstrap 1, 2, 3 for nav text position, links color and hover color -->
+                <nav class="pad navbar navbar-default navbar-inverse" role="navigation">
+                    <div class="navbar-header col-lg-12 col-md-12 col-sm-12">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+                            <span class="sr-only">Toggle Navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse col-lg-12 col-md-12 col-sm-12" id="collapse">
+                        <!-- Pills & Tabs -->
+                        <ul class="nav nav-pills nav-tabs nav-justified">
+                            <!-- Glyphicons -->
+                            <!-- Customized Bootstrap 4, 5 for Glyphicons color by making the active one green and the rest orange -->
+                            <li class="active"><a href="index.html">Home  <span class="glyphicon glyphicon-home green"></span></a></li>
+                            <li><a href="programming.html">Programming  <span class="glyphicon glyphicon-pencil orange"></span></a></li>
+                            <li><a href="web.html">Web <span class="glyphicon glyphicon-envelope orange"></span></a></li>
+                            <li><a href="database.html">Database  <span class="glyphicon glyphicon-folder-open orange"></span></a></li>
+                            <li><a href="networking.html">Networking  <span class="glyphicon glyphicon-signal orange"></span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Customized Bootstrap 7 for changing jumbotron background color to black instead of white -->
+            <div class="jumbotron pad">
+                <header>
+                    <img class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12" src="images/banner5.jpg" alt="logo">
+                    <h2 class="title col-lg-12 col-md-12 col-sm-12 col-xs-12">The Pillars Of Information Technology. .</h2>
+                </header>
+
+                <!-- Video -->
+                <div class="content col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-12" >
+
+                    <video id= "IT" width="500" height="400" class="btn btn-warning btn-xs btntextcolor" preload="auto">
+                        <source src="IT.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <br>
+                    <button onclick="playpause()" class="btn btn-info btn-xs btntextcolor"><span class="glyphicon glyphicon-play"></span><span class="glyphicon glyphicon-pause"></span></button>
+                    <button onclick="vDown()" class="btn btn-warning btn-xs btntextcolor"><span class="glyphicon glyphicon-volume-down"></span></button>
+                    <button onclick="vUp()" class="btn btn-warning btn-xs btntextcolor"><span class="glyphicon glyphicon-volume-up"></span></button>
+                    <button onclick="large()" class="btn btn-warning btn-xs btntextcolor"> <span class="glyphicon glyphicon-resize-full"></span></button>
+                    <button onclick="small()" class="btn btn-warning btn-xs btntextcolor"> <span class="glyphicon glyphicon-resize-small"></span></button>
+
+                    <script>
+                        var myVideo=document.getElementById("IT"); 
+                        function playpause()
+                        { 
+                        if (myVideo.paused) 
+                          myVideo.play(); 
+                        else 
+                          myVideo.pause(); 
+                        }
+                        function vUp(){
+                            myVideo.volume+=0.1
+                        }
+                        function vDown(){
+                            myVideo.volume-=0.1
+                        }
+                        function large()
+                        { 
+                        myVideo.width=600;
+                        myVideo.height=500;
+                        }
+                        function small()
+                        { 
+                        myVideo.width=400;
+                        myVideo.height=300; 
+                        } 
+                    </script>
+                </div>
+                
+                <article class="content col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-12">
+                    <p>It is the 21st century! It is the era of technology. It is the era when everything
+                       is computerized. Life is becoming easier for our human bodies; however, it needs
+                       humans' minds to function technologically. Humans should be well-educated so they can
+                       experience the new life, the easy one. For sure, this life has its pros and cons.
+                       Therefore, you should be aware of the basic pillars of these technology,
+                       so you can live and develop for the next generation.</p>
+                </article>
+
+                <!-- Customized Bootstrap 6 for changing buttons' text color to blabk -->
+                <section class="content col-lg-6 col-md-6">
+                    <a href="programming.html"><img class="col-sm-offset-1 col-sm-10 col-xs-12" src="images/course_logo.jpg" alt="logo1"></a>
+                    <p>Programming is not just writing series of lines to make
+                        a software or a program running on a personal computer.
+                        It is a code that runs on different machines and devices.
+                    </p>
+                    <div><a class="btn btn-success btn-xs btntextcolor" role="button" href="programming.html">Read more</a></div>
+                </section>
+                
+                <section class="content col-lg-6 col-md-6">        
+                    <a href="web.html"><img class="col-sm-offset-1 col-sm-10 col-xs-12" src="images/Atlas-of-the-World-Wide-Web-1-750x498.jpg" alt="logo2"></a>
+                    <p>Web_Technology is the interface that we need to interact with people.
+                        It is the online framework that we build our programming on.
+                        All the media and social connections are written using web.
+                    </p>
+                    <div><a class="btn btn-danger btn-xs btntextcolor" role="button" href="web.html">Read more</a></div>
+                </section>
+                
+                <section class="content col-lg-6 col-md-6">
+                    <a href="database.html"><img class="col-sm-offset-1 col-sm-10 col-xs-12" src="images/23445537-database-concept-in-word-tag-cloud-on-black-background.jpg" alt="logo3"></a>         
+                    <p>Database is the warehouse of data and informaion.
+                        Organizations, companies, and simple projects use database
+                        to store, update, and retrieve all their information.
+                    </p>
+                    <div><a class="btn btn-warning btn-xs btntextcolor" role="button" href="database.html">Read more</a></div>
+                </section>
+                
+                <section class="content col-lg-6 col-md-6">
+                    <a href="networking.html"><img class="col-sm-offset-1 col-sm-10 col-xs-12" src="images/SocialNetworking.jpg" alt="logo4"></a>
+                    <p>Networking is the international or local grid that
+                        connects all devices together. Social and interactive
+                        websites are connected using simple and international network.
+                    </p>
+                    <div><a class="btn btn-primary btn-xs btntextcolor" role="button" href="networking.html">Read more</a></div>
+                </section>
+
+                <!-- Map -->
+                <div id="mapPlaceholder" class="content col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-12"></div>
+
+                <!-- Audio -->
+                <div class="content col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-12">
+                    <p>Is Technology Changing Us?</p>
+                    <audio id="audioID" controls>
+                        <source src="IsTechnologyChangingUs.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                    </audio>
+                    <br>
+                    <button onclick="play_pause()" class="btn btn-info btn-xs btntextcolor"><span class="glyphicon glyphicon-play"></span><span class="glyphicon glyphicon-pause"></span></button>
+                    <button onclick="volDown()" class="btn btn-warning btn-xs btntextcolor"><span class="glyphicon glyphicon-volume-down"></span></button>
+                    <button onclick="volUp()" class="btn btn-warning btn-xs btntextcolor"><span class="glyphicon glyphicon-volume-up"></span></button>
+                    <script>
+                        var myAudio=document.getElementById("audioID"); 
+                        function play_pause()
+                        { 
+                        if (myAudio.paused) 
+                          myAudio.play(); 
+                        else 
+                          myAudio.pause(); 
+                        }
+                        function volUp(){
+                            myAudio.volume+=0.1
+                        }
+                        function volDown(){
+                            myAudio.volume-=0.1
+                        }
+                    </script>
+                </div>
+
+                <div class="content col-lg-12 col-md-12">
+                    <form id="contact" method="post" action="#">
+                        <h4>Contact Us For More Information . . </h4>
+                        <div>
+                            <label for="contact_name">Your Name:</label>
+                            <input type="text" id="contact_name" name="name" class="blacktext"/><br>
+                            <span class="error">The name is missing!</span>
+                        </div>
+                    
+                        <div>
+                            <label for="contact_email">Your Email:</label>
+                            <input type="email" id="contact_email" name="email" class="blacktext"/><br>
+                            <span class="error">Enter a valid email address</span>                
+                        </div>                      
+                    
+                        <div>
+                            <label for="contact_website">Your Website:</label>
+                            <input type="url" id="contact_website" name="website" class="blacktext"/><br>
+                            <span class="error">Enter a correct URL</span>                              
+                        </div>                      
+                    
+                        <div>
+                            <label for="contact_message">Message:</label>
+                            <textarea id="contact_message" name="message" class="blacktext" cols="22" rows="7"></textarea><br>
+                            <span class="error">Enter a message</span>                                               
+                        </div>                  
+                    
+                        <div id="contact_submit">               
+                            <button type="submit" class="blacktext">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            
+            <footer><img class="pad col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10" src="images/banner_it1.jpg" alt="logo5"></footer>
+            
+            <p class="title col-lg-12 col-md-12 col-sm-12 col-xs-12">Copyright &copy; 2014 Pillars Of IT. All rights reserved.</p>
+        
+        </main>
+
+        <!-- javascript -->
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+    </body>
+    
+</html>

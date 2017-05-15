@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<!-- Ali Ayad, Interactive Media Development, Project Final Submission, May 24, 2014 -->
+<html lang="en">
+    
+    <head>
+        <title>Home</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <script src="js/respond.js"></script>
+        <!-- - - - - - - - - - - - - - - - - - - - - -->
+        <link rel="stylesheet" type="text/css" href="custom.css">
+        <link rel="stylesheet" href="jquery-ui-1.10.4.css">
+        <script type='text/javascript' src="js/jquery-1.10.2.js"></script>
+        <script type='text/javascript' src="js/jquery-ui-1.10.4.js"></script>
+        <script>
+            $(function() {
+                $( "#accordion" ).accordion();
+              });
+        </script>
+    </head>
+    
+    <body>
+        
+        <main class="container">
+            
+            <div class="row">
+                <!--Customized Bootstrap 1, 2, 3 for nav text position, links color and hover color-->
+                <nav class="pad navbar navbar-default navbar-inverse" role="navigation">
+                    <div class="navbar-header col-lg-12 col-md-12 col-sm-12">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+                            <span class="sr-only">Toggle Navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse col-lg-12 col-md-12 col-sm-12" id="collapse">
+                        <!-- Pills & Tabs -->
+                        <ul class="nav nav-pills nav-tabs nav-justified">
+                            <!-- Glyphicons -->
+                            <!-- Customized Bootstrap 4, 5 for Glyphicons color by making the active one green and the rest orange -->
+                            <li><a href="index.html">Home  <span class="glyphicon glyphicon-home orange"></span></a></li>
+                            <li><a href="programming.html">Programming  <span class="glyphicon glyphicon-pencil orange"></span></a></li>
+                            <li><a href="web.html">Web <span class="glyphicon glyphicon-envelope orange"></span></a></li>
+                            <li class="active"><a href="database.html">Database  <span class="glyphicon glyphicon-folder-open green"></span></a></li>
+                            <li><a href="networking.html">Networking  <span class="glyphicon glyphicon-signal orange"></span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Customized Bootstrap 7 for changing jumbotron background color to black instead of white -->
+            
+                <header>
+                    <img class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12" src="images/banner5.jpg" alt="logo">
+                    <h2 class="title col-lg-12 col-md-12 col-sm-12 col-xs-12">The World Of Database Languages . .</h2>
+                </header>
+                    
+                <img class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12 accd" src="images/mysql.jpg" alt="logo6">
+            
+                <div id="accordion" class="content col-lg-12 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12">
+                    <h3>Data Definition Language (DDL)</h3>
+                        <div><!-- Customized Bootstrap 6 for changing buttons' text color to blabk -->
+                            <article class="content col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12">
+                                <p class="blacktext">It is a language that allows the users to define data and their relationship to other types of data. It is mainly used to create files, databases, data dictionary and tables within databases. It is also used to specify the structure of each table, set of associated values with each attribute, integrity constraints, security and authorization information for each table and physical storage structure of each table on disk.<br><br><a class="btn btn-warning btn-small btntextcolor" role="button" href="http://ecomputernotes.com/fundamental/what-is-a-database/database-languages">The following table gives an overview about usage of DDL statements in SQL:<br>Click to read more</a></p>
+                            </article>
+                            <div><img class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12" src="images/DDLstatementinSQL.jpg" alt="logo7"></div>
+                        </div>
+
+                    <h3>Data Manipulation Language (DML)</h3>
+                        <div>
+                            <article class="content col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12">    
+                                <p class="blacktext">It is a language that provides a set of operations to support the basic data manipulation operations on the data held in the databases. It allows users to insert, update, delete and retrieve data from the database. The part of DML that involves data retrieval is called a query language.<br><br><a class="btn btn-warning btn-small btntextcolor" role="button" href="http://ecomputernotes.com/fundamental/what-is-a-database/database-languages">The following table gives an overview about the usage of DML statements in SQL:<br>Click to read more</a></p>
+                            </article>
+                            <div> <img class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12" src="images/DMLStatementinSQL.jpg" alt="logo8"></div>
+                        </div>
+
+                    <h3>Data Control Language (DCL)</h3>
+                        <div>
+                            <article class="content col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12">    
+                                <p class="blacktext">DCL statements control access to data and the database using statements such as GRANT and REVOKE. A privilege can either be granted to a User with the help of GRANT statement. The privileges assigned can be SELECT, ALTER, DELETE, EXECUTE, INSERT, INDEX etc. In addition to granting of privileges, you can also revoke (taken back) it by using REVOKE command.<br><br>
+                                <a class="btn btn-warning btn-small btntextcolor" role="button" href="http://ecomputernotes.com/fundamental/what-is-a-database/database-languages">The following table gives an overview about the usage of DCL statements in SQL:<br>Click to read more</a></p>
+                            </article><!-- http://ecomputernotes.com/fundamental/what-is-a-database/database-languages -->
+                            <div><img class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12" src="images/DCLStatementinSQL.jpg" alt="logo9"></div>
+                        </div>
+                </div>
+            
+
+            <footer><img class="pad col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10 accd1" src="images/banner_it1.jpg" alt="logo5"></footer>
+            
+            <p class="title col-lg-12 col-md-12 col-sm-12 col-xs-12">Copyright &copy; 2014 Pillars Of IT. All rights reserved.</p>
+        
+        </main>
+
+        <!-- javascript -->
+        <script src="js/bootstrap.min.js"></script>
+
+    </body>
+    
+</html>
